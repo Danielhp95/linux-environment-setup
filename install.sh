@@ -7,7 +7,56 @@ function head_install_chrome() {
     sudo apt-get install google-chrome-stable
 } 
 
-
 function head_install_vlc() {
     sudo apt-get install vlc
+}
+
+function install_pip() {
+    sudo apt-get install python-pip
+    sudo apt-get install python-pip3
+}
+
+function install_ipython() {
+    sudo pip install ipython
+}
+
+function install_pipenv() {
+    sudo pip3 install pew
+    sudo pip install pipenv
+}
+
+# Will need to change when new version arrives
+function install_python36() {
+    sudo add-apt-repository ppa:jonathonf/python-3.6
+    sudo apt update
+    sudo apt install python3.6
+    sudo apt install python3.6-dev
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo python3.6 get-pip.py
+}
+
+function install_openssh_server() {
+    sudo apt-get install openssh-server
+}
+
+function install_vim() {
+    sudo apt-get install vim
+}
+
+function install_unzip() {
+    sudo apt-get install unzip
+}
+
+function install_mosh() {
+    sudo apt-get install mosh
+}
+
+# Developer tools
+function install_developer_tools() {
+
+}
+
+# Commodity tools
+function install_commodity_tools() {
+
 }
