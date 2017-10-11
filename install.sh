@@ -42,6 +42,12 @@ function install_openssh_server() {
 
 function install_vim() {
     sudo apt-get install vim
+    install_vundle
+}
+
+# Remember that it is necessary to change .vimrc
+function install_vundle() {
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
 function install_unzip() {
@@ -50,6 +56,13 @@ function install_unzip() {
 
 function install_mosh() {
     sudo apt-get install mosh
+}
+
+function install_jdk9() {
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java9-installer
+    sudo apt install oracle-java9-set-default
 }
 
 # Developer tools
@@ -62,4 +75,4 @@ function install_mosh() {
 #
 #}
 
-install_python36
+install_jdk9
