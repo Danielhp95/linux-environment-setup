@@ -33,6 +33,7 @@ function install_python36() {
     sudo apt install python3.6-dev
     wget https://bootstrap.pypa.io/get-pip.py
     sudo python3.6 get-pip.py
+    rm get-pip.py
 }
 
 function install_openssh_server() {
@@ -52,11 +53,13 @@ function install_mosh() {
 }
 
 # Developer tools
-function install_developer_tools() {
+#function install_developer_tools() {
+#
+#}
+#
+## Commodity tools
+#function install_commodity_tools() {
+#
+#}
 
-}
-
-# Commodity tools
-function install_commodity_tools() {
-
-}
+install_python36
