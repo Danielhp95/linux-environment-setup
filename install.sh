@@ -58,6 +58,7 @@ function install_mosh() {
     sudo apt-get install mosh
 }
 
+# Need to set some env variables
 function install_jdk9() {
     sudo add-apt-repository ppa:webupd8team/java
     sudo apt-get update
