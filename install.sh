@@ -40,6 +40,10 @@ function install_openssh_server() {
     sudo apt-get install openssh-server
 }
 
+function install_latex_compiler() {
+    sudo apt-get install texlive-latex-base
+}
+
 function install_vim() {
     sudo apt-get install vim
     install_vundle
@@ -66,6 +70,13 @@ function install_jdk9() {
     sudo apt install oracle-java9-set-default
 }
 
+function install_telegram() {
+    sudo add-apt-repository ppa:atareao/telegram
+    sudo apt-get update
+    sudo apt-get install telegram
+
+}
+
 # Developer tools
 #function install_developer_tools() {
 #
@@ -76,4 +87,4 @@ function install_jdk9() {
 #
 #}
 
-install_jdk9
+install_telegram
