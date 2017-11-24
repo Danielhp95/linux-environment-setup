@@ -11,6 +11,12 @@ function head_install_vlc() {
     sudo apt-get install vlc
 }
 
+function head_install_mpv() {
+    sudo add-apt-repository ppa:mc3man/mpv-tests
+    sudo apt update 
+    sudo apt install mpv
+}
+
 function install_pip() {
     sudo apt-get install python-pip
     sudo apt-get install python-pip3
@@ -86,5 +92,4 @@ function install_telegram() {
 #function install_commodity_tools() {
 #
 #}
-
-install_telegram
+head_install_mpv
