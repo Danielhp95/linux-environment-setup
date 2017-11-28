@@ -48,6 +48,7 @@ function install_openssh_server() {
 
 function install_latex_compiler() {
     sudo apt-get install texlive-latex-base
+    sudo apt-get install lacheck
 }
 
 function install_vim() {
