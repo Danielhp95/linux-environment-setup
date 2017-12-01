@@ -54,11 +54,21 @@ function install_latex_compiler() {
 function install_vim() {
     sudo apt-get install vim
     install_vundle
+    install_you_complete_me
 }
 
 # Remember that it is necessary to change .vimrc
 function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
+# The --all flag will probably fail due to dependencies. Fix as appropiate
+function install_you_complete_me() {
+    sudo apt-get install build-essential cmake
+    sudo apt-get install python-dev python3-dev
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --all
+    cd -
 }
 
 function install_unzip() {
