@@ -17,6 +17,20 @@ function head_install_mpv() {
     sudo apt install mpv
 }
 
+function head_install_spotify() {
+    # 1. Add the Spotify repository signing keys to be able to verify downloaded packages
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+
+    # 2. Add the Spotify repository
+    echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
+    # 3. Update list of available packages
+    sudo apt-get update
+
+    # 4. Install Spotify
+    sudo apt-get install spotify-client
+}
+
 function install_pip() {
     sudo apt-get install python-pip
     sudo apt-get install python-pip3
@@ -49,6 +63,7 @@ function install_openssh_server() {
 function install_latex_compiler() {
     sudo apt-get install texlive-latex-base
     sudo apt-get install lacheck
+    # sudo apt-get install texlive CHECK IF THIS IS NECESSARY
 }
 
 function install_vim() {
@@ -103,4 +118,4 @@ function install_telegram() {
 #function install_commodity_tools() {
 #
 #}
-head_install_mpv
+head_install_spotify
