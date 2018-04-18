@@ -109,6 +109,34 @@ function install_telegram() {
 
 }
 
+function install_mono() {
+    sudo apt-get install mono-complete
+}
+
+function install_nuget() {
+    sudo apt install nuget
+}
+
+function install_skype() {
+    sudo apt install apt-transport-https
+    curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
+    echo "deb https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skypeforlinux.list
+    sudo apt update
+    sudo apt install skypeforlinux
+}
+
+# Used mainly for vim airline fonts.
+function install_powerline() {
+    apt-get install python-pip
+    sudo pip install git+git://github.com/Lokaltog/powerline
+    wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+    wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+    sudo mv PowerlineSymbols.otf /usr/share/fonts/
+    # fc-cache builds font information. -v for verbose, -f for forcing even up to date cached builds.
+    sudo fc-cache -vf /usr/share/fonts/
+    sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+}
+
 # Developer tools
 #function install_developer_tools() {
 #
@@ -118,4 +146,4 @@ function install_telegram() {
 #function install_commodity_tools() {
 #
 #}
-head_install_spotify
+install_skype
