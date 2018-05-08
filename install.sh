@@ -34,6 +34,14 @@ function install_pipenv() {
     sudo pip install pipenv
 }
 
+function install_silver_searcher() {
+    sudo apt-get install silversearcher-ag
+}
+
+function install_ctags() {
+    sudo apt install exuberant-ctags
+}
+
 # Will need to change when new version arrives
 function install_python36() {
     sudo add-apt-repository ppa:jonathonf/python-3.6
@@ -155,11 +163,11 @@ function install_all() {
 	install_latex_compiler
 	install_nuget
     install_base_16
-    install tmux
+    install_tmux
     install_zathura
+    install_silver_searcher
 	# Untrusted key on repo. Won't work unless fixed
 	#install_skype
 }
 
 #install_all
-install_tmux
