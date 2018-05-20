@@ -1,16 +1,5 @@
 #!/bin/bash
 
-function head_install_chrome() {
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 	
-    sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-    sudo apt-get update
-    sudo apt-get install google-chrome-stable
-} 
-
-function head_install_vlc() {
-    sudo apt-get install vlc
-}
-
 function head_install_mpv() {
     sudo add-apt-repository ppa:mc3man/mpv-tests
     sudo apt update 
@@ -33,7 +22,7 @@ function head_install_spotify() {
 
 function install_pip() {
     sudo apt-get install python-pip
-    sudo apt-get install python-pip3
+    sudo apt-get install python3-pip
 }
 
 function install_ipython() {
@@ -43,6 +32,14 @@ function install_ipython() {
 function install_pipenv() {
     sudo pip3 install pew
     sudo pip install pipenv
+}
+
+function install_silver_searcher() {
+    sudo apt-get install silversearcher-ag
+}
+
+function install_ctags() {
+    sudo apt install exuberant-ctags
 }
 
 # Will need to change when new version arrives
@@ -63,7 +60,12 @@ function install_openssh_server() {
 function install_latex_compiler() {
     sudo apt-get install texlive-latex-base
     sudo apt-get install lacheck
-    # sudo apt-get install texlive CHECK IF THIS IS NECESSARY
+    sudo apt-get install latex-beamer
+    sudo apt-get install texlive-full # This package is +3GB big. Use apt-get install texlive for lightweight version
+}
+
+function install_zathura() {
+    sudo apt-get install zathura
 }
 
 function install_vim() {
@@ -102,11 +104,10 @@ function install_jdk9() {
     sudo apt install oracle-java9-set-default
 }
 
-function install_telegram() {
+function head_install_telegram() {
     sudo add-apt-repository ppa:atareao/telegram
     sudo apt-get update
     sudo apt-get install telegram
-
 }
 
 function install_mono() {
@@ -147,13 +148,37 @@ function install_docker() {
     sudo apt-get install -y docker-ce
 }
 
-# Developer tools
-#function install_developer_tools() {
-#
-#}
-#
-## Commodity tools
-#function install_commodity_tools() {
-#
-#}
-install_docker
+function install_base_16(){
+    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+}
+
+function install_tmux() {
+    sudo apt-get install tmux
+    # Install Tmux plugin manager. TPM
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+}
+
+
+function install_all() {
+	head_install_mpv
+	head_install_spotify
+	install_python36
+	install_ipython
+	install_pipenv
+	install_pip	
+	head_install_telegram
+	install_mosh
+	install_mono
+	install_openssh_server
+	install_latex_compiler
+	install_nuget
+    install_base_16
+    install_tmux
+    install_zathura
+    install_silver_searcher
+	# Untrusted key on repo. Won't work unless fixed
+	#install_skype
+    install_docker
+}
+
+#install_all
