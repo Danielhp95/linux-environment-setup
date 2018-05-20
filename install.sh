@@ -137,6 +137,16 @@ function install_powerline() {
     sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 }
 
+function install_docker() {
+    # Taken from official page: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
+    sudo apt-get update
+    sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    sudo apt-get install -y docker-ce
+}
+
 # Developer tools
 #function install_developer_tools() {
 #
@@ -146,4 +156,4 @@ function install_powerline() {
 #function install_commodity_tools() {
 #
 #}
-install_skype
+install_docker
