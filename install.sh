@@ -42,7 +42,12 @@ function install_ctags() {
     sudo apt install exuberant-ctags
 }
 
+function install_tree() {
+    sudo apt-get install tree
+}
+
 # Will need to change when new version arrives
+# Isn't working anymore?
 function install_python36() {
     sudo add-apt-repository ppa:jonathonf/python-3.6
     sudo apt update
@@ -72,6 +77,7 @@ function install_vim() {
     sudo apt-get install vim
     install_vundle
     install_you_complete_me
+    install_ctags
 }
 
 # Remember that it is necessary to change .vimrc
@@ -88,6 +94,11 @@ function install_you_complete_me() {
     cd -
 }
 
+function install_fzf() {
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+}
+
 function install_unzip() {
     sudo apt-get install unzip
 }
@@ -96,12 +107,13 @@ function install_mosh() {
     sudo apt-get install mosh
 }
 
-# Need to set some env variables
-function install_jdk9() {
-    sudo add-apt-repository ppa:webupd8team/java
-    sudo apt-get update
-    sudo apt-get install oracle-java9-installer
-    sudo apt install oracle-java9-set-default
+# Installs both JDK and JRE
+function install_java10() {
+    echo oracle-java10-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+    sudo add-apt-repository ppa:linuxuprising/java
+    sudo apt update
+    sudo apt install oracle-java10-installer
+    oracle-java10-set-default package
 }
 
 function head_install_telegram() {
@@ -140,12 +152,9 @@ function install_powerline() {
 
 function install_docker() {
     # Taken from official page: https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository
-    sudo apt-get update
-    sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo apt-key fingerprint 0EBFCD88
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    sudo apt-get install -y docker-ce
+    sudo apt install docker.io
+    sudo systemctl start docker
+    sudo systemctl enable docker
 }
 
 function install_base_16(){
@@ -158,27 +167,69 @@ function install_tmux() {
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 }
 
-
-function install_all() {
-	head_install_mpv
-	head_install_spotify
-	install_python36
-	install_ipython
-	install_pipenv
-	install_pip	
-	head_install_telegram
-	install_mosh
-	install_mono
-	install_openssh_server
-	install_latex_compiler
-	install_nuget
-    install_base_16
-    install_tmux
-    install_zathura
-    install_silver_searcher
-	# Untrusted key on repo. Won't work unless fixed
-	#install_skype
-    install_docker
+function install_git() {
+	sudo apt-get install git
 }
 
-#install_all
+function copy_latest_configs() {
+    git clone https://github.com/Danielhp95/configs.git
+    cd configs/
+    python setup.py
+    cd ..
+    rm -rf configs/
+}
+
+
+function install_flux() {
+    sudo add-apt-repository ppa:nathan-renniewaldock/flux
+    sudo apt-get update
+    sudo apt-get install fluxgui
+}
+
+function install_all() {
+    install_git
+
+    # Programming languages
+    install_java10
+    install_ipython
+    install_latex_compiler
+    install_mono # c# linux compiler
+    install_nuget # c# kinda pip
+    # install_python36  Ubuntu 18 comes with this
+
+    # Media programs
+    head_install_telegram
+    head_install_mpv
+    head_install_spotify
+
+    # Programming language tools
+    install_pipenv
+    install_pip	
+
+    # Shell tools
+    install_openssh_server
+    install_mosh
+    install_fzf
+    install_silver_searcher
+    install_unzip
+    install_base_16
+    install_tmux
+    install_powerline
+    install_tree
+
+    # Health
+    install_flux
+
+    # All hail
+    install_vim
+    install_zathura
+    install_docker
+
+    # Config files
+    copy_latest_configs
+
+    # Untrusted key on repo. Won't work unless fixed
+    # install_skype
+}
+
+# install_all
