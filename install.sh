@@ -23,6 +23,7 @@ function head_install_spotify() {
 function install_pip() {
     sudo apt-get install python-pip
     sudo apt-get install python3-pip
+    sudo pip install setuptools
 }
 
 function install_ipython() {
@@ -189,6 +190,10 @@ function install_flux() {
 function install_all() {
     install_git
 
+    # Programming language tools
+    install_pipenv
+    install_pip	
+
     # Programming languages
     install_java10
     install_ipython
@@ -202,9 +207,6 @@ function install_all() {
     head_install_mpv
     head_install_spotify
 
-    # Programming language tools
-    install_pipenv
-    install_pip	
 
     # Shell tools
     install_openssh_server
@@ -232,4 +234,4 @@ function install_all() {
     # install_skype
 }
 
-# install_all
+install_all
