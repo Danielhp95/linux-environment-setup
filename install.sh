@@ -27,7 +27,8 @@ function install_pip() {
 }
 
 function install_ipython() {
-    sudo pip install ipython
+    sudo apt-get install ipython
+    sudo apt-get install ipython3
 }
 
 function install_pipenv() {
