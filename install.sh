@@ -31,6 +31,12 @@ function install_ipython() {
     sudo apt-get install ipython3
 }
 
+# Syntax checker for python
+function install_flake8() {
+    sudo python -m pip install flake8
+    sudo python3 -m pip install flake8
+}
+
 function install_pipenv() {
     sudo pip3 install pew
     sudo pip install pipenv
