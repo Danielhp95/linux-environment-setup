@@ -2,7 +2,7 @@
 
 function head_install_mpv() {
     sudo add-apt-repository ppa:mc3man/mpv-tests
-    sudo apt update 
+    sudo apt update
     sudo apt install mpv
 }
 
@@ -207,6 +207,7 @@ function install_all() {
     install_latex_compiler
     install_mono # c# linux compiler
     install_nuget # c# kinda pip
+    install_flake8 # python syntax checker
     # install_python36  Ubuntu 18 comes with this
 
     # Media programs
