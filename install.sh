@@ -196,6 +196,10 @@ function install_flux() {
     sudo apt-get install fluxgui
 }
 
+function install_pandoc() {
+    sudo apt-get install pandoc
+}
+
 function install_all() {
     install_git
 
@@ -236,6 +240,9 @@ function install_all() {
     install_vim
     install_zathura
     install_docker
+
+    # Livestyle utilities
+    install_pandoc
 
     # Config files
     copy_latest_configs
