@@ -177,6 +177,8 @@ function install_tmux() {
 
 function install_git() {
 	sudo apt-get install git
+    # Sets a global gitignore
+    git config --global core.excludesfile '~/.gitignore'
 }
 
 function copy_latest_configs() {
