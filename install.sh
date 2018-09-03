@@ -198,6 +198,7 @@ function install_flux() {
 
 function install_pandoc() {
     sudo apt-get install pandoc
+    sudo apt-get install pandoc-citeproc
 }
 
 function install_all() {
