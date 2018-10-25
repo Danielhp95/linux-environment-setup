@@ -107,12 +107,16 @@ function install_fzf() {
     ~/.fzf/install
 }
 
+function install_xclip() {
+    sudo apt-get install xclip -y
+}
+
 function install_unzip() {
-    sudo apt-get install unzip
+    sudo apt-get install unzip -y
 }
 
 function install_mosh() {
-    sudo apt-get install mosh
+    sudo apt-get install mosh -y
 }
 
 # Installs both JDK and JRE
@@ -227,6 +231,7 @@ function install_all() {
     install_openssh_server
     install_mosh
     install_fzf
+    install_xclip
     install_silver_searcher
     install_unzip
     install_base_16
