@@ -88,22 +88,40 @@ function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
+function install_fira_code_font() {
+    yay -S otf-fira-code
+}
+
+function install_maim() {
+    yay -S maim
+}
+
+function install_compton_tryone() {
+    yay -S compton-tryone-git
+}
+
 function install_all() {
     install_yay
     install_oh_my_zsh
     install_rofi
 
     # Aesthetics
-    # TODO powerfont
+    install_fira_code_font
     install_wpgtk
+    install_compton_tryone
 
     # Small utilities
     install_bat
     install_feh
     install_xcape
     install_silver_searcher
-    install_universal_ctags
     install_cmake
+    install_universal_ctags
+    install_maim
+
+    # VIM
+    install_vundle
+
 
     # Programming languages
     install_pip
