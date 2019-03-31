@@ -4,6 +4,10 @@ function install_yay() {
     pacman -S yay
 }
 
+function install_firefox() {
+    yay -S firefox
+}
+
 function install_oh_my_zsh() {
     # Install zsh
     yay -S zsh
@@ -11,10 +15,6 @@ function install_oh_my_zsh() {
     curl -L http://install.ohmyz.sh | sh
     # Makes zsh default terminal
     chsh -s $(which zsh)
-}
-
-function install_feh() {
-    yay -S feh
 }
 
 function install_telegram() {
@@ -68,7 +68,11 @@ function install_latex() {
 
 # Syntax checker for python
 function install_flake8() {
-   pip install flake8
+   sudo pip install flake8
+}
+
+function install_kitty_terminal() {
+   yay -S kitty
 }
 
 function install_silver_searcher() {
@@ -88,8 +92,23 @@ function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
 
+
+#########
+# Fonts #
+#########
 function install_fira_code_font() {
     yay -S otf-fira-code
+}
+
+function install_font_awesome() {
+    yay -S ttf-font-awesome-4
+}
+
+#####################
+# Images / Pictures #
+#####################
+function install_feh() {
+    yay -S feh
 }
 
 function install_maim() {
@@ -105,8 +124,11 @@ function install_all() {
     install_oh_my_zsh
     install_rofi
 
-    # Aesthetics
+    # Fonts
     install_fira_code_font
+    install_font_awesome
+
+    # Aesthetics
     install_wpgtk
     install_compton_tryone
 
@@ -131,8 +153,12 @@ function install_all() {
     install_latex
 
     # Personal usage
+    install_firefox
     install_telegram
     install_mpv
     install_tlp
     install_zathura
+    install_kitty
 }
+
+install_all
