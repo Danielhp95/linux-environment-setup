@@ -4,6 +4,10 @@ function install_yay() {
     pacman -S yay
 }
 
+function install_xclip() {
+    yay -S xclip
+}
+
 function install_firefox() {
     yay -S firefox
 }
@@ -87,9 +91,24 @@ function install_cmake() {
    yay -S cmake
 }
 
-# Remember that it is necessary to change .vimrc
+function install_vim() {
+    copy_vimrc_file
+    install_vundle
+    install_vim_plugins
+}
+
+function copy_vimrc_file() {
+    echo "TODO"
+}
+
+# Remember that it is necessary to have the correct vimrc
 function install_vundle() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
+function install_vim_plugins() {
+    vim +PluginUpdate +qall
+    python ~/.vim/bundle/YouCompleteMe/install.py --all
 }
 
 
@@ -136,14 +155,14 @@ function install_all() {
     install_bat
     install_feh
     install_xcape
+    install_xclip
     install_silver_searcher
     install_cmake
     install_universal_ctags
     install_maim
 
     # VIM
-    install_vundle
-
+    install_vim
 
     # Programming languages
     install_pip
