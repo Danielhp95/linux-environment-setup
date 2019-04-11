@@ -12,6 +12,10 @@ function install_firefox() {
     yay -S firefox
 }
 
+function install_tmux() {
+    yay -S tmux
+}
+
 function install_oh_my_zsh() {
     # Install zsh
     yay -S zsh
@@ -142,6 +146,7 @@ function install_all() {
     install_yay
     install_oh_my_zsh
     install_rofi
+    install_tmux
 
     # Fonts
     install_fira_code_font
