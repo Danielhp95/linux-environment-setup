@@ -142,6 +142,19 @@ function install_compton_tryone() {
     yay -S compton-tryone-git
 }
 
+function install_omnipause() {
+    yay -S python2-dbus
+    git clone https://github.com/mel00010/OmniPause
+    cd OmniPause/
+    sudo make install
+    cd ..
+    rm -rf OmniPause/
+}
+
+function install_entr() {
+    yay -S entr
+}
+
 function install_all() {
     install_yay
     install_oh_my_zsh
@@ -165,6 +178,8 @@ function install_all() {
     install_cmake
     install_universal_ctags
     install_maim
+    install_omnipause
+    install_entr
 
     # VIM
     install_vim
