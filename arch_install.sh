@@ -155,6 +155,16 @@ function install_entr() {
     yay -S entr
 }
 
+function install_jekyll() {
+    yay -S rubygems
+    gem update
+    gem install jekyll
+    gem install bundler
+    bundle update --bundler
+    # remember that it is needed to extend $PATH
+    # PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+}
+
 function install_all() {
     install_yay
     install_oh_my_zsh
@@ -198,6 +208,7 @@ function install_all() {
     install_tlp
     install_zathura
     install_kitty
+    install_jekyll
 }
 
 install_all
