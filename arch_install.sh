@@ -29,7 +29,6 @@ function install_telegram() {
     yay -S telegram-desktop-bin
 }
 
-
 function install_xcape() {
     yay -s xcape-git
 }
@@ -40,6 +39,10 @@ function install_wpgtk() {
 
 function install_bat() {
     yay -S bat
+}
+
+function install_exa() {
+    yay -S exa
 }
 
 function install_rofi() {
@@ -115,6 +118,18 @@ function install_vim_plugins() {
     python ~/.vim/bundle/YouCompleteMe/install.py --all
 }
 
+function install_i3_alternating_layouts() {
+    # NOT WORKING
+    sudo pip install i3-py
+    git clone https://github.com/olemartinorg/i3-alternating-layout ~/.config/i3/scripts/
+}
+
+
+function install_coc_vim_python() {
+    pip install python-language-server
+    pip install 'python-language-server[rope]'
+}
+
 
 #########
 # Fonts #
@@ -181,6 +196,7 @@ function install_all() {
 
     # Small utilities
     install_bat
+    install_exa
     install_feh
     install_xcape
     install_xclip
