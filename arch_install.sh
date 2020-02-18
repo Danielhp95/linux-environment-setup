@@ -16,6 +16,10 @@ function install_tmux() {
     yay -S tmux
 }
 
+function install_ripgrep() {
+    yay -S ripgrep
+}
+
 function install_oh_my_zsh() {
     # Install zsh
     yay -S zsh
@@ -98,9 +102,13 @@ function install_cmake() {
    yay -S cmake
 }
 
+function install_gotop() {
+    # System monitoring tool
+    yay -S gotop
+}
+
 function install_vim() {
     copy_vimrc_file
-    install_vundle
     install_vim_plugins
 }
 
@@ -108,14 +116,8 @@ function copy_vimrc_file() {
     echo "TODO"
 }
 
-# Remember that it is necessary to have the correct vimrc
-function install_vundle() {
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-}
-
 function install_vim_plugins() {
     vim +PluginUpdate +qall
-    python ~/.vim/bundle/YouCompleteMe/install.py --all
 }
 
 function install_i3_alternating_layouts() {
@@ -206,6 +208,7 @@ function install_all() {
     install_maim
     install_omnipause
     install_entr
+    install_gotop
 
     # VIM
     install_vim
@@ -225,6 +228,10 @@ function install_all() {
     install_zathura
     install_kitty
     install_jekyll
+    install_ripgrep
+
+    # Change shell to zsh
+    chsh -s /usr/bin/zsh
 }
 
 install_all
